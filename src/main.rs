@@ -1,3 +1,4 @@
+// 将其他库里的代码功能导入到当前作用域
 use rand::{Rng};
 use std::cmp::Ordering;
 use std::io;
@@ -9,6 +10,7 @@ fn main() {
 
     // println!("秘密数字为：{}", secret_number);
 
+    // 无限循环
     loop {
         println!("请输入你猜的数字：");
 
@@ -18,6 +20,7 @@ fn main() {
             .read_line(&mut guess)
             .expect("没有读到任何内容");
 
+        // 作用域遮盖，而【不是】覆盖！两个变量都还在。
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
             Err(_) => continue,
